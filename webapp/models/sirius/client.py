@@ -1,9 +1,8 @@
-from typing import TYPE_CHECKING, List
-
-from sqlalchemy import ForeignKey, Integer, String
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy import Integer, String
+from sqlalchemy.orm import Mapped, mapped_column
 
 from webapp.models.meta import DEFAULT_SCHEMA, Base
+
 
 class Client(Base):
     __tablename__ = 'client'
@@ -14,5 +13,5 @@ class Client(Base):
     first_name: Mapped[str] = mapped_column(String, unique=True)
 
     last_name: Mapped[str] = mapped_column(String)
-    
+
     company_name: Mapped[str] = mapped_column(String)

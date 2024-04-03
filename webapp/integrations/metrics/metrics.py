@@ -31,11 +31,11 @@ DEFAULT_BUCKETS = (
 )
 
 REQUEST_COUNT = prometheus_client.Counter(
-    'http_requests_total', 'Total count of HTTP requests', ['method', 'endpoint', 'http_status']
+    'http_requests_total', 'Total count of HTTP requests', ['method', 'endpoint', 'http_status'],
 )
 
 ERROR_COUNT = prometheus_client.Counter(
-    'http_errors_total', 'Total count of HTTP errors', ['method', 'endpoint', 'http_status']
+    'http_errors_total', 'Total count of HTTP errors', ['method', 'endpoint', 'http_status'],
 )
 
 # histogram_quantile(0.99, sum(rate(sirius_integrations_latency_seconds[1m])) by (le, integration))

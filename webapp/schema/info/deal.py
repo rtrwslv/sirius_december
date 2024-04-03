@@ -1,9 +1,8 @@
 from datetime import date, datetime
-from pydantic import BaseModel, ConfigDict, field_validator
+from pydantic import BaseModel, field_validator
+
 
 class DealInfo(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
-
     title: str
     amount: float
     date: date

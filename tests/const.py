@@ -1,7 +1,5 @@
 from typing import Any, Dict
 
-from webapp.api.crud.const import API_PREFIX
-
 URLS: Dict[str, Any] = {
     'auth': {
         'login': '/auth/login',
@@ -13,10 +11,10 @@ URLS: Dict[str, Any] = {
         'delete': '/api/v1/client/delete/{client_id}',
         'update': '/api/v1/client/update/{client_id}',
     },
-    'deal':{
+    'deal': {
         'create': '/api/v1/deal/create',
         'delete': '/api/v1/deal/delete/{deal_id}',
         'get': '/api/v1/deal/{deal_id}',
-        'update': '/api/v1/deal/update/{deal_id}'
-    }
+        'update': '/api/v1/deal/update/{deal_id}',
+    },
 }

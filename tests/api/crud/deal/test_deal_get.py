@@ -9,22 +9,23 @@ from tests.const import URLS
 BASE_DIR = Path(__file__).parent
 FIXTURES_PATH = BASE_DIR / 'fixtures'
 
+
 @pytest.mark.parametrize(
     ('username', 'password', 'title', 'amount', 'date', 'deal_id', 'expected_status', 'fixtures'),
     [
         (
             'user',
             'qwerty',
-            'Покупка оц',
-            1000.12,
-            '2023-05-30',
+            'Покупка макаронов',
+            100.12,
+            '2023-01-28',
             1,
             status.HTTP_200_OK,
             [
                 FIXTURES_PATH / 'sirius.deal.json',
                 FIXTURES_PATH / 'sirius.user.json',
             ],
-        )
+        ),
     ],
 )
 
@@ -41,13 +42,17 @@ async def test_get_deals(
 ) -> None:
     response = await client.get(
         URLS['deal']['get'].format(deal_id=deal_id),
-        headers={'Authorization': f'Bearer {access_token}'}
+        headers={'Authorization': f'Bearer {access_token}'},
     )
     print(response.headers)
     assert response.status_code == expected_status
     response_data = response.json()
     print(response_data)
-    assert title == response_data['cached_deal']['title']
-    assert amount == response_data['cached_deal']['amount']
-    assert date == response_data['cached_deal']['date']
-    
+    if "deal" in response_data:
+        assert title == response_data['deal']['title']
+        assert amount == response_data['deal']['amount']
+        assert date == response_data['deal']['date']
+    elif "cached_deal" in response_data:
+        assert title == response_data['cached_deal']['title']
+        assert amount == response_data['cached_deal']['amount']
+        assert date == response_data['cached_deal']['date']

@@ -10,6 +10,7 @@ from webapp.schema.info.user import UserInfo
 from fastapi.security import OAuth2PasswordRequestForm
 from typing import Annotated
 from webapp.utils.auth.jwt import oauth2_scheme
+from webapp.utils.auth.password import hash_password
 
 
 @user_router.post('/update/{id}')
@@ -20,7 +21,7 @@ async def update_user(
     session: AsyncSession = Depends(get_session),
 ) -> ORJSONResponse:
     exists = user_crud.get_model(session, id) is not None
-
+    body.password = hash_password(body.password)
     await user_crud.update(session, id, body)
 
     if exists:

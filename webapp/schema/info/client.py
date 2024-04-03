@@ -1,5 +1,5 @@
-from typing import List
 from pydantic import BaseModel
+
 
 class ClientInfo(BaseModel):
     first_name: str

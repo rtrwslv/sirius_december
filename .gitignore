@@ -1,1 +1,8 @@
-__pycache__
+*.env
+/venv/
+*__pycache__
+.pytest_cache
+/.coverage
+poetry.lock
+.gitignore
+*.pyc

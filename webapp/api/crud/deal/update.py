@@ -25,6 +25,6 @@ async def update_deal(
 
     if exists:
         return ORJSONResponse(
-            content={'message': 'Deal updated successfully'}, status_code=status.HTTP_204_NO_CONTENT
+            content={'message': 'Deal updated successfully'}, status_code=status.HTTP_204_NO_CONTENT,
         )
     return ORJSONResponse(content={'message': 'Deal created successfully'}, status_code=status.HTTP_201_CREATED)

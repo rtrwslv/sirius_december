@@ -25,7 +25,7 @@ async def update_client(
 
     if exists:
         return ORJSONResponse(
-            content={'message': 'Client updated successfully'}, status_code=status.HTTP_200_OK
+            content={'message': 'Client updated successfully'}, status_code=status.HTTP_200_OK,
         )
 
     return ORJSONResponse(content={'message': 'Client created successfully'}, status_code=status.HTTP_201_CREATED)

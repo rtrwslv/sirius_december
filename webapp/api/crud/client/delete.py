@@ -11,6 +11,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from webapp.utils.auth.jwt import oauth2_scheme
 from typing import Annotated
 
+
 @client_router.post('/delete/{client_id}')
 async def delete_client(
     client_id: int,

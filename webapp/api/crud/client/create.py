@@ -13,6 +13,7 @@ from webapp.integrations.postgres import get_session
 from webapp.schema.info.client import ClientInfo
 from webapp.utils.auth.jwt import oauth2_scheme
 
+
 @client_router.post('/create')
 async def create_client(
     body: ClientInfo,

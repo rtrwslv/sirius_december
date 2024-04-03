@@ -8,7 +8,6 @@ from webapp.crud.user import user_crud
 from webapp.integrations.postgres import get_session
 from webapp.utils.auth.jwt import oauth2_scheme
 from fastapi.security import OAuth2PasswordRequestForm
-from typing import Annotated
 
 
 @user_router.post('/delete/{id}')

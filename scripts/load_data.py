@@ -46,7 +46,6 @@ async def main(fixtures: List[str]) -> None:
                 try:
                     await session.execute(insert(model).values(model_obj))
                     await session.commit()
-                    print(f"Inserted data for {username}.")
                 except IntegrityError as e:
                     print(f'IntegrityError: Unique constraint violation - {str(e)}')
 

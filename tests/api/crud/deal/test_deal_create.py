@@ -24,7 +24,7 @@ FIXTURES_PATH = BASE_DIR / 'fixtures'
                 FIXTURES_PATH / 'sirius.deal.json',
                 FIXTURES_PATH / 'sirius.user.json',
             ],
-        )
+        ),
     ],
 )
 
@@ -41,7 +41,6 @@ async def test_create_deal(
     response = await client.post(
         URLS['deal']['create'],
         json={'title': title, 'amount': amount, 'date': date},
-        headers={'Authorization': f'Bearer {access_token}'}
+        headers={'Authorization': f'Bearer {access_token}'},
     )
-    response_data = response.json()
     assert response.status_code == expected_status

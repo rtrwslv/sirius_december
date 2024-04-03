@@ -24,7 +24,7 @@ FIXTURES_PATH = BASE_DIR / 'fixtures'
                 FIXTURES_PATH / 'sirius.client.json',
                 FIXTURES_PATH / 'sirius.user.json',
             ],
-        )
+        ),
     ],
 )
 
@@ -41,7 +41,6 @@ async def test_create_client(
     response = await client.post(
         URLS['client']['create'],
         json={'first_name': first_name, 'last_name': last_name, 'company_name': company_name},
-        headers={'Authorization': f'Bearer {access_token}'}
+        headers={'Authorization': f'Bearer {access_token}'},
     )
-    response_data = response.json()
     assert response.status_code == expected_status

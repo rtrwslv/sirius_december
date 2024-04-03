@@ -22,7 +22,7 @@ FIXTURES_PATH = BASE_DIR / 'fixtures'
                 FIXTURES_PATH / 'sirius.user.json',
                 FIXTURES_PATH / 'sirius.client.json',
             ],
-        )
+        ),
     ],
 )
 @pytest.mark.asyncio()
@@ -35,7 +35,7 @@ async def test_delete_client(
 ) -> None:
     response = await client.post(
         URLS['client']['delete'].format(client_id=client_id),
-        headers={'Authorization': f'Bearer {access_token}'}
+        headers={'Authorization': f'Bearer {access_token}'},
     )
 
     assert response.status_code == expected_status

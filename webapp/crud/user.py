@@ -11,12 +11,12 @@ from webapp.utils.auth.password import hash_password
 @async_integrations_timer
 async def get_user(session: AsyncSession, user_info: UserInfo) -> User | None:
     return (
-        await session.scalars( #Чтобы вмести tuple возвращался объект
+        await session.scalars(  # Чтобы вмести tuple возвращался объект
             select(User).where(
                 User.username == user_info.username,
                 User.password == hash_password(user_info.password),
-            )
+            ),
         )
-    ).one_or_none() #Вернется либо один объект либо None
+    ).one_or_none()  # Вернется либо один объект либо None
 
 user_crud = AsyncCRUDFactory(User)
